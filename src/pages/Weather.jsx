@@ -1,32 +1,53 @@
 import { useState, useEffect } from "react";
 
+import rainImg from "../assets/rain.jpg"
+import normalImg from "../assets/normal.jpg";
+import sunnyImg from "../assets/sunny.jpg";
+
 function Weather() {
   const [city, setCity] = useState("Jalandhar");
   const [weather, setWeather] = useState(null);
+  const [bgImage, setBgImage] = useState(normalImg);
 
   const fetchWeather = async (cityName) => {
     const res = await fetch(
       `https://api.openweathermap.org/data/2.5/weather?q=${cityName}&appid=e963392523de99885b2c59657895fdb1&units=metric`
     );
     const data = await res.json();
+    // Check....api
+    console.log(data);
+    
 
     if (data.cod === 200) {
       setWeather(data);
+
+      const pressure = data.main.pressure;
+
+      // Background logic based on pressure
+      if (pressure < 1000) {
+        setBgImage(rainImg);
+      } else if (pressure >= 1000 && pressure <= 1020) {
+        setBgImage(normalImg);
+      } else {
+        setBgImage(sunnyImg);
+      }
     } else {
       setWeather(null);
       alert("City not found");
     }
   };
 
-  // ✅ Load default city
+  // Load default city
   useEffect(() => {
     fetchWeather("Jalandhar");
   }, []);
 
   return (
-    <div className="min-h-screen bg-linear-to-r from-teal-300 to-cyan-400 flex flex-col items-center py-10">
+    <div className="min-h-screen bg-linear-to-r from-teal-300 to-cyan-400 flex flex-col items-center py-10 "
+    style={{ backgroundImage: `url(${bgImage})` }}
+    >
 
-      <h1 className="text-4xl font-semibold text-gray-700 mb-6">
+      <h1 className="text-4xl font-semibold text-white mb-6">
         Weather App
       </h1>
 
@@ -72,6 +93,11 @@ function Weather() {
               <p className="text-xl">{weather.main.humidity}%</p>
               <p className="text-sm text-gray-400">Humidity</p>
             </div>
+            {/* For check pressure */}
+            {/* <div>
+              <p className="text-xl">{weather.main.pressure}</p>
+              <p className="text-sm text-gray-400">Pressure</p>
+            </div> */}
           </div>
         </div>
       )}

@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-
+import sunnyImg from "../assets/sunny.jpg";
 function Food() {
   const [meals, setMeals] = useState([]);
   const [search, setSearch] = useState("Chicken");
@@ -18,20 +18,20 @@ function Food() {
       });
   };
 
-  // ✅ Load initially
+  //  Load initially
   useEffect(() => {
     getMeals("Chicken");
   }, []);
 
   return (
-    <div className="min-h-screen bg-gray-100 p-8">
+    <div className="min-h-screen bg-gray-100 p-8" style={{backgroundImage: `url(${sunnyImg})`}}>
 
       {/* 🔍 Search Section */}
       <div className="flex gap-4 mb-6 justify-center">
         <input
           type="text"
           placeholder="Search Food..."
-          className="p-2 border rounded w-64"
+          className="p-2 border rounded w-64 text-amber-50"
           value={search}
           onChange={(e) => setSearch(e.target.value)}
         />
@@ -44,7 +44,7 @@ function Food() {
         </button>
       </div>
 
-      <h2 className="text-2xl mb-6 text-gray-600 text-center font-bold">
+      <h2 className="text-2xl mb-6 text-white text-center font-bold">
         Recipe List
       </h2>
 

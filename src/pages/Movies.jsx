@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-
+import rainImg from "../assets/rain.jpg"
 function Movies() {
   const [products, setProducts] = useState([]);
   const [search, setSearch] = useState("Avengers");
@@ -16,15 +16,15 @@ function Movies() {
       });
   };
 
-  // ✅ Load initially
+  // Load initially
   useEffect(() => {
     getMovies("Avengers");
   }, []);
 
   return (
-    <div className="min-h-screen bg-gray-100 p-8">
+    <div className="min-h-screen bg-gray-100 p-8" style={{backgroundImage: `url(${rainImg})`}}>
 
-      {/* 🔎 Header */}
+      {/*Header */}
       <div className="flex justify-between items-center bg-blue-300 p-4 rounded-2xl mb-8">
         <h1 className="text-4xl font-bold text-gray-800">
           HOOKED
@@ -48,11 +48,11 @@ function Movies() {
         </div>
       </div>
 
-      <h2 className="text-2xl mb-6 text-blue-600">
+      <h2 className="text-2xl mb-6 text-black">
         Sharing a few of my favorite movies.
       </h2>
 
-      {/* 🎬 Movie Grid */}
+      {/*Movie Grid */}
       <div className="grid grid-cols-4 gap-6">
         {products.map((item) => (
           <div

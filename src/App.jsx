@@ -7,6 +7,8 @@ import Contact from "./pages/Contact";
 import Weather from "./pages/Weather";
 import Movies from "./pages/Movies";
 import Recipies from "./pages/Recipies";
+import Sports from "./pages/Sports";
+
 
 function App() {
   return (
@@ -19,6 +21,8 @@ function App() {
         <Route path="/weather" element={<Weather />} />
         <Route path="/movies" element={<Movies />} />
         <Route path="/recipes" element={<Recipies />} />
+        <Route path="/sports" element={<Sports />} />
+
       </Routes>
     </BrowserRouter>
   );
