@@ -22,19 +22,19 @@ function Movies() {
   }, []);
 
   return (
-    <div className="min-h-screen bg-gray-100 p-8" style={{backgroundImage: `url(${rainImg})`}}>
-
+    <div
+      className="min-h-screen bg-gray-100 bg-cover bg-center p-4 sm:p-8"
+      style={{ backgroundImage: `url(${rainImg})` }}
+    >
       {/*Header */}
-      <div className="flex justify-between items-center bg-blue-300 p-4 rounded-2xl mb-8">
-        <h1 className="text-4xl font-bold text-gray-800">
-          HOOKED
-        </h1>
+      <div className="flex flex-col gap-4 md:flex-row md:justify-between md:items-center bg-blue-300 p-4 rounded-2xl mb-8">
+        <h1 className="text-4xl font-bold text-gray-800">HOOKED</h1>
 
-        <div className="flex gap-4">
+        <div className="flex flex-col sm:flex-row gap-4 w-full md:w-auto">
           <input
             type="text"
             placeholder="Search Movie..."
-            className="p-2 border rounded w-64 text-black font-bold"
+            className="p-2 border rounded w-full sm:w-64 text-black font-bold"
             value={search}
             onChange={(e) => setSearch(e.target.value)}
           />
@@ -53,7 +53,7 @@ function Movies() {
       </h2>
 
       {/*Movie Grid */}
-      <div className="grid grid-cols-4 gap-6">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
         {products.map((item) => (
           <div
             key={item.imdbID}

@@ -24,14 +24,16 @@ function Food() {
   }, []);
 
   return (
-    <div className="min-h-screen bg-gray-100 p-8" style={{backgroundImage: `url(${sunnyImg})`}}>
-
+    <div
+      className="min-h-screen bg-gray-100 bg-cover bg-center p-4 sm:p-8"
+      style={{ backgroundImage: `url(${sunnyImg})` }}
+    >
       {/* 🔍 Search Section */}
-      <div className="flex gap-4 mb-6 justify-center">
+      <div className="flex flex-col sm:flex-row gap-4 mb-6 justify-center">
         <input
           type="text"
           placeholder="Search Food..."
-          className="p-2 border rounded w-64 text-amber-50"
+          className="p-2 border rounded w-full sm:w-64 text-amber-50"
           value={search}
           onChange={(e) => setSearch(e.target.value)}
         />
@@ -49,7 +51,7 @@ function Food() {
       </h2>
 
       {/* 🍔 Food Grid */}
-      <div className="grid grid-cols-4 gap-6">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
         {meals.map((item) => (
           <div
             key={item.idMeal}

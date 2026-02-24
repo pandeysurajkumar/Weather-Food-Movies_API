@@ -43,40 +43,34 @@ function Weather() {
   }, []);
 
   return (
-    <div className="min-h-screen bg-linear-to-r from-teal-300 to-cyan-400 flex flex-col items-center py-10 "
-    style={{ backgroundImage: `url(${bgImage})` }}
+    <div
+      className="min-h-screen bg-linear-to-r from-teal-300 to-cyan-400 flex flex-col items-center py-10 px-4"
+      style={{ backgroundImage: `url(${bgImage})` }}
     >
+      <h1 className="text-4xl font-semibold text-white mb-6">Weather App</h1>
 
-      <h1 className="text-4xl font-semibold text-white mb-6">
-        Weather App
-      </h1>
-
-      <div className="flex gap-2">
+      <div className="flex flex-col sm:flex-row gap-3 w-full max-w-md">
         <input
           type="text"
           placeholder="Enter City"
-          className="w-72 p-3 rounded-full shadow outline-none bg-amber-50"
+          className="w-full p-3 rounded-full shadow outline-none bg-amber-50"
           value={city}
           onChange={(e) => setCity(e.target.value)}
         />
         <button
           onClick={() => fetchWeather(city)}
-          className="bg-white px-4 rounded-full shadow"
+          className="bg-white px-4 py-3 rounded-full shadow"
         >
           Search
         </button>
       </div>
 
       {weather && (
-        <div className="bg-white w-96 rounded-3xl shadow-xl p-8 text-center mt-8">
+        <div className="bg-white w-full max-w-md rounded-3xl shadow-xl p-8 text-center mt-8">
           <h2 className="text-2xl text-gray-600">{weather.name}</h2>
-          <h1 className="text-6xl font-light my-4">
-            {weather.main.temp}°C
-          </h1>
+          <h1 className="text-6xl font-light my-4">{weather.main.temp}°C</h1>
 
-          <p className="text-gray-500">
-            {weather.weather[0].main}
-          </p>
+          <p className="text-gray-500">{weather.weather[0].main}</p>
 
           <img
             className="mx-auto my-4"
